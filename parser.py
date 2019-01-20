@@ -18,12 +18,16 @@ class House:
         self.md5 = self.get_md5()
 
     def add_hash_to_file(self):
+        """
+        Записує хеш будинка до файлу з хешами
+        :return:
+        """
         with open('houses.hash', 'a+') as file:
             file.write(f'{self.md5}\n')
 
     def is_new(self):
         """
-        Перевіряє чи будинок новий
+        Перевіряє чи будинок новий (перевірка чи його хеш є в файлі з хешами)
         :return:
         """
         with open('houses.hash', 'r') as file:
@@ -52,7 +56,6 @@ def parse_houses(forever_alive=False):
     """
     Парсить будинки
     :param forever_alive: постійно запущений, незважаючи на помилки
-    :return:
     """
     if forever_alive:
         while True:
