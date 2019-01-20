@@ -48,7 +48,7 @@ def get_all_houses():
         'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0'
     })
     soup = BeautifulSoup(request.text, 'html.parser')
-    for house in soup.find_all('div', {'class': 'odd'}).reverse():
+    for house in reversed(list(soup.find_all('div', {'class': 'odd'}))):
         yield House(house.div.text, house.i.text.split(': ')[1])
 
 
